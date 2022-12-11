@@ -171,10 +171,14 @@ Having a batch size of `2` is rather too less for training of a large-sized Conv
 
 The loss metrics look as follows.
 - Training
- ![reference_model](Figures/Experiment_0_Loss_Metrics.png)
+
+
+![reference_model](Figures/Experiment_0_Loss_Metrics.png)
 
 - Validation
- ![validation_model](Figures/Experiment_0_Precision_Recall.png)
+
+
+![validation_model](Figures/Experiment_0_Precision_Recall.png)
 
 ### Experiment 1: Improvement on the Experiment0 Model
 
@@ -183,10 +187,15 @@ Using Data Augmentation has an impact on the loss metrics, which can be seen cle
 The pipeline can be found in `experiments/experiment1/pipeline_new.config`.
 
 The loss metrics look as follows.
+
 - Training
- ![reference_model](Figures/Experiment_1_Loss_Metrics.png)
+
+
+![reference_model](Figures/Experiment_1_Loss_Metrics.png)
 
 - Validation
+
+
  ![validation_model](Figures/Experiment_1_Precision_Recall.png)
 
 ### Data Augmentation Characteristics
@@ -194,7 +203,7 @@ Since the data consists of images taken at different times and with different ba
 
 The Images of the dataset are
 
-![EDA_Images](Figures/Experiment_0_Precision_Recall.png)
+![EDA_Images](Figures/Exploratory_Data_Analysis.png)
 
 
 The data augmentation strategy implemented is as follows:
