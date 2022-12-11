@@ -19,7 +19,7 @@ The data you will use for training, validation and testing is organized as follo
     - test - contains 3 files to test your model and create inference videos
 ```
 The `training_and_validation` folder contains file that have been downsampled: we have selected one every 10 frames from 10 fps videos. The `testing` folder contains frames from the 10 fps video without downsampling.
-```
+
 You will split this `training_and_validation` data into `train`, and `val` sets by completing and executing the `create_splits.py` file.
 
 
@@ -53,6 +53,7 @@ Follow [the README therein](./build/README.md) to create a docker container and 
 The first goal of this project is to download the data from the Waymo's Google Cloud bucket to your local machine. For this project, we only need a subset of the data provided (for example, we do not need to use the Lidar data). Therefore, we are going to download and trim immediately each file. In `download_process.py`, you can view the `create_tf_example` function, which will perform this processing. This function takes the components of a Waymo Tf record and saves them in the Tf Object Detection api format. An example of such function is described [here](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html#create-tensorflow-records). We are already providing the `label_map.pbtxt` file.
 
 You can run the script using the following command:
+
 ```
 python download_process.py --data_dir {processed_file_location} --size {number of files you want to download}
 ```
@@ -78,6 +79,7 @@ In the class, we talked about cross-validation and the importance of creating me
 * split the tf records files between these three folders by symbolically linking the files from `/home/workspace/data/waymo/` to `/home/workspace/data/train/`, `/home/workspace/data/val/`, and `/home/workspace/data/test/`
 
 Use the following command to run the script once your function is implemented:
+
 ```
 python create_splits.py --data-dir /home/workspace/data
 ```
@@ -103,6 +105,7 @@ python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeli
 ```
 Once the training is finished, launch the evaluation process:
 * an evaluation process:
+
 ```
 python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config --checkpoint_dir=experiments/reference/
 ```
@@ -138,23 +141,18 @@ Finally, you can create a video of your model's inferences for any tf record fil
 python inference_video.py --labelmap_path label_map.pbtxt --model_path experiments/reference/exported/saved_model --tf_record_path /data/waymo/testing/segment-12200383401366682847_2552_140_2572_140_with_camera_labels.tfrecord --config_path experiments/reference/pipeline_new.config --output_path animation.gif
 ```
 
-## Submission Template
+## Solution
 
-### Project overview
-This section should contain a brief description of the project and what we are trying to achieve. Why is object detection such an important component of self driving car systems?
+### Project Description
 
-### Set up
-This section should contain a brief description of the steps to follow to run the code for this repository.
+### Dataset Analysis and Description 
 
-### Dataset
-#### Dataset analysis
-This section should contain a quantitative and qualitative description of the dataset. It should include images, charts and other visualizations.
-#### Cross validation
-This section should detail the cross validation strategy and justify your approach.
+### Training on the Reference Model and Results
 
-### Training
-#### Reference experiment
-This section should detail the results of the reference experiment. It should includes training metrics and a detailed explanation of the algorithm's performances.
+### Experiment 0: Improvement on the Reference Model
 
-#### Improve on the reference
-This section should highlight the different strategies you adopted to improve your model. It should contain relevant figures and details of your findings.
+### Experiment 1: Improvement on the Experiment0 Model
+
+### Data Augmentation Characteristics
+
+### Inference
