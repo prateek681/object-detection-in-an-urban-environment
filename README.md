@@ -153,13 +153,39 @@ The dataset consists of everyday images containing objects such as cars, pedestr
 From the Data Analysis performed in 'Exploratory Data Analysis.ipynb', we can see that there are lesser pedestrians and cyclists than casrs. 
 There are harfly any number of cyclists to bee seen in the images. This can be seen as follows:
 
-![EDA_Classes](Figures/Classes Distribution.png)
+![EDA_Classes](Figures/Classes_Distribution.png)
 
 ### Training on the Reference Model and Results
 
+The reference model is ResNet50 SSD without any data augumentaion (more details of model and its parameters in `pipeline.config`). 
+
+The reference model loss characteristics are:
+    ![reference_model](Figures/reference_loss.png)
+
+We can see from the plots that both losses are large and there is a lot of noise, which does not converge. 
+Moreover, the precision and recall metrics are also very low and thus this model is unable to detect and classify any object successfully. 
+
 ### Experiment 0: Improvement on the Reference Model
+We increased the parameter **batch size** from `2` to `8`, but keep the training steps the same (2500)
+Having a batch size of `2` is rather too less for training of a large-sized Convolutional Neural Network such as the ResNet50. The pipeline can be found in `experiments/experiment0/pipeline_new.config`.
+
+The loss metrics look as follows.
+- Training
+ ![reference_model](Figures/Experiment_0_Loss_Metrics.png)
+
+- Validation
 
 ### Experiment 1: Improvement on the Experiment0 Model
+
+We kept the parameter **batch size** the same as `8`, but included data augmentation steps (mentioned below). The total steps for training (2500) remains the same.
+Using Data Augmentation has an impact on the loss metrics, which will be discussed in the further sections. 
+The pipeline can be found in `experiments/experiment1/pipeline_new.config`.
+
+The loss metrics look as follows.
+- Training
+ ![reference_model](Figures/Experiment_1_Loss_Metrics.png)
+
+- Validation
 
 ### Data Augmentation Characteristics
 Since the data consists of images taken at different times and with different backgrounds, it is helpful to augment the images using a well-defined data augmentation strategy.
@@ -168,4 +194,14 @@ The Images of the dataset are
 
 ![EDA_Images](Figures/Exploratory_Data_Analysis.png)
 
+
+The data augmentation strategy implemented is as follows:
+1.
+2.
+3.
+
+A few augmented images can be seen:
+
 ### Inference
+
+Training Loss could be made better with more training time and higher number of images in a batch. This can be achieved with better computational resources such as a GPU. Also, with better optimization strategies and a 
