@@ -174,11 +174,12 @@ The loss metrics look as follows.
  ![reference_model](Figures/Experiment_0_Loss_Metrics.png)
 
 - Validation
+ ![validation_model](Figures/Experiment_0_Precision_Recall.png)
 
 ### Experiment 1: Improvement on the Experiment0 Model
 
 We kept the parameter **batch size** the same as `8`, but included data augmentation steps (mentioned below). The total steps for training (2500) remains the same.
-Using Data Augmentation has an impact on the loss metrics, which will be discussed in the further sections. 
+Using Data Augmentation has an impact on the loss metrics, which can be seen clearly in the following section. 
 The pipeline can be found in `experiments/experiment1/pipeline_new.config`.
 
 The loss metrics look as follows.
@@ -186,22 +187,39 @@ The loss metrics look as follows.
  ![reference_model](Figures/Experiment_1_Loss_Metrics.png)
 
 - Validation
+ ![validation_model](Figures/Experiment_1_Precision_Recall.png)
 
 ### Data Augmentation Characteristics
 Since the data consists of images taken at different times and with different backgrounds, it is helpful to augment the images using a well-defined data augmentation strategy.
 
 The Images of the dataset are
 
-![EDA_Images](Figures/Exploratory_Data_Analysis.png)
+![EDA_Images](Figures/Experiment_0_Precision_Recall.png)
 
 
 The data augmentation strategy implemented is as follows:
-1.
-2.
-3.
+- The contrast value has been changed to enable better edge detection. The newer value is 1.0. The parameter changed here was 'max_delta' which was set to 1.0. 
+
+- After having a look at the dataset, it was seen that there were a few images with lower light conditions. In order to accumulate this condition, the parameter 'random_rgb_to_gray - probability' was set to 0.2. 
+
+- On the other hand, images with higher light conditions were also generated using the parameter 'random_adjust_brightness - max_delta' which was also set to 0.2.
 
 A few augmented images can be seen:
 
+![aug](Figures/Data_Augmentation_8.png)
+![aug](Figures/Data_Augmentation_10.png)
+![aug](Figures/Data_Augmentation_3.png)
+![aug](Figures/Data_Augmentation_5.png)
+![aug](Figures/Data_Augmentation_13.png)
+![aug](Figures/Data_Augmentation_15.png)
+
+
+
 ### Inference
 
-Training Loss could be made better with more training time and higher number of images in a batch. This can be achieved with better computational resources such as a GPU. Also, with better optimization strategies and a 
+A few testing examples of the model are:
+![test](Figures/test_1.png)
+![test](Figures/test_2.png)
+
+
+Training Loss could be made better with more training time and higher number of images in a batch. This can be achieved with better computational resources and better  GPUs. The model is also not correctly balanced, because there are a very few cyclists in the dataset. Thus, a better (more balanced) dataset would yield better results. 
