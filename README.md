@@ -227,8 +227,8 @@ A few augmented images can be seen:
 ### Inference
 
 A few testing examples of the model are:
-![test](Figures/test_1.png)
-![test](Figures/test_2.png)
+![test](Figures/test_1.gif)
+![test](Figures/test_2.gif)
 
 
 Training Loss could be made better with more training time and higher number of images in a batch. This can be achieved with better computational resources and better  GPUs. The model is also not correctly balanced, because there are a very few cyclists in the dataset. Thus, a better (more balanced) dataset would yield better results. 
