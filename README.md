@@ -1,5 +1,8 @@
 # Object Detection in an Urban Environment
 
+## Project Description
+The Goal of the Project is to localize (using bounding boxes) and clasiify cars, pedestrians and cyclists in camera input feed from an urban environment. 
+
 ## Data
 
 For this project, we will be using data from the [Waymo Open dataset](https://waymo.com/open/).
@@ -143,9 +146,14 @@ python inference_video.py --labelmap_path label_map.pbtxt --model_path experimen
 
 ## Solution
 
-### Project Description
-
 ### Dataset Analysis and Description 
+
+The dataset consists of everyday images containing objects such as cars, pedestrians, and cyclists in various conditions such as rainy, sunny or foggy weather and at different time periods.
+
+From the Data Analysis performed in 'Exploratory Data Analysis.ipynb', we can see that there are lesser pedestrians and cyclists than casrs. 
+There are harfly any number of cyclists to bee seen in the images. This can be seen as follows:
+
+![EDA_Classes](Figures/Classes Distribution.png)
 
 ### Training on the Reference Model and Results
 
@@ -154,5 +162,10 @@ python inference_video.py --labelmap_path label_map.pbtxt --model_path experimen
 ### Experiment 1: Improvement on the Experiment0 Model
 
 ### Data Augmentation Characteristics
+Since the data consists of images taken at different times and with different backgrounds, it is helpful to augment the images using a well-defined data augmentation strategy.
+
+The Images of the dataset are
+
+![EDA_Images](Figures/Exploratory_Data_Analysis.png)
 
 ### Inference
